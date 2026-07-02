@@ -1,0 +1,288 @@
+/* GLOBAL STYLES */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Cinzel', 'Arial', sans-serif;
+    background-color: #080808;
+    color: #f5f5f5;
+    overflow-x: hidden;
+}
+
+/* NAVBAR DESIGN */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(15, 15, 15, 0.95);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d4af37;
+    letter-spacing: 2px;
+}
+
+nav a {
+    color: #bbb;
+    margin-left: 25px;
+    text-decoration: none;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+nav a:hover, nav a.active {
+    color: #d4af37;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* INTERACTIVE PAGE STATE ROUTING */
+.page {
+    display: none;
+    min-height: 100vh;
+    padding-top: 80px; /* Accounts for fixed nav bar */
+}
+
+.page.active-page {
+    display: block;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* SCREEN BACKGROUND DESIGNS */
+.hero-bg {
+    background: url('https://images.stockcake.com/public/a/b/4/ab44f9bf-7e3c-472c-8da0-4b5f195d5a1e_large/fallen-king-s-throne-stockcake.jpg') center/cover no-repeat;
+}
+
+.content-bg {
+    background: url('https://videocdn.cdnpk.net/videos/807673ed-9d72-53ed-bf04-cc94298ce9db/vertical/thumbnails/large.jpg?semt=ais_hybrid&item_id=8086000&w=740&q=80') center/cover no-repeat;
+}
+
+/* CINEMATIC OVERLAYS FOR COMFORTABLE READING */
+.overlay {
+    background: linear-gradient(180deg, rgba(8, 8, 8, 0.6) 0%, rgba(8, 8, 8, 0.85) 100%);
+    min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.content-box {
+    max-width: 800px;
+    background: rgba(20, 20, 20, 0.85);
+    padding: 50px;
+    border-radius: 4px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+/* TYPOGRAPHY */
+h2 {
+    font-size: 42px;
+    color: #d4af37;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.tagline {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #e0e0e0;
+    margin-bottom: 30px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+/* BUTTONS */
+.cta-btn {
+    background: transparent;
+    color: #d4af37;
+    border: 2px solid #d4af37;
+    padding: 12px 35px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #d4af37;
+    color: #000;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+/* CHAPTER LIST COMPONENT */
+.chapter-list {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.chapter-list li {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: rgba(30, 30, 30, 0.6);
+    border-left: 4px solid #d4af37;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.ch-num {
+    font-size: 28px;
+    color: #d4af37;
+    font-weight: bold;
+    margin-right: 25px;
+}
+
+.ch-details h3 {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.ch-details p {
+    font-size: 15px;
+    margin: 0;
+}
+
+/* FOOTER */
+footer {
+    background: #0f0f0f;
+    padding: 25px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KING'S TALE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER NAVIGATION -->
+    <header>
+        <div class="logo">KING'S TALE</div>
+        <nav>
+            <a href="#" class="nav-link active" onclick="showPage('home')">Home</a>
+            <a href="#" class="nav-link" onclick="showPage('story')">Story</a>
+            <a href="#" class="nav-link" onclick="showPage('chapters')">Chapters</a>
+            <a href="#" class="nav-link" onclick="showPage('about')">About</a>
+        </nav>
+    </header>
+
+    <!-- MAIN APP WRAPPER -->
+    <main>
+        
+        <!-- HERO PAGE (HOME) -->
+        <section id="home" class="page active-page hero-bg">
+            <div class="overlay">
+                <div class="content-box">
+                    <h2>From Nothing to Greatness</h2>
+                    <p class="tagline">The story of a man who refused to stay ordinary. A journey of rise, struggle, and legacy.</p>
+                    <button class="cta-btn" onclick="showPage('story')">Begin Reading</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STORY PAGE -->
+        <section id="story" class="page content-bg">
+            <div class="overlay">
+                <div class="content-box text-left">
+                    <h2>The Lore</h2>
+                    <p>Welcome to the world of King’s Tale. Empires do not crumble overnight, nor are kings born out of comfort. This chronicle follows the descent into trial and ascension into absolute rule of an outcast who shattered his destiny.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTERS PAGE -->
+        <section id="chapters" class="page content-bg">
+            <div class="overlay">
+                <div class="content-box">
+                    <h2>Chronicles</h2>
+                    <ul class="chapter-list">
+                        <li>
+                            <span class="ch-num">01</span>
+                            <div class="ch-details">
+                                <h3>The Beginning</h3>
+                                <p>An awakening amidst ash. The legacy starts here.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT PAGE -->
+        <section id="about" class="page content-bg">
+            <div class="overlay">
+                <div class="content-box">
+                    <h2>About the Author</h2>
+                    <p>Curated and published by <strong>progress.io</strong>.</p>
+                    <p>King's Tale is an immersive web fiction experience updated weekly for subscribers.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 King’s Tale | Built by progress.io</p>
+    </footer>
+
+    <!-- INTERACTIVE NAVIGATION SCRIPT -->
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active-page'));
+
+            // Remove active style from nav buttons
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => link.classList.remove('active'));
+
+            // Show current target page
+            document.getElementById(pageId).classList.add('active-page');
+
+            // Set current active nav highlight
+            const activeNav = Array.from(links).find(link => link.getAttribute('onclick').includes(pageId));
+            if (activeNav) activeNav.classList.add('active');
+        }
+    </script>
+</body>
+</html>
